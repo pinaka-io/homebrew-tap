@@ -11,7 +11,7 @@ class DnsSwitch < Formula
 
   resource "textual" do
     url "https://files.pythonhosted.org/packages/source/t/textual/textual-0.50.1.tar.gz"
-    sha256 "4e0b4a0a1e1f1e6e8e1f1e6e8e1f1e6e8e1f1e6e8e1f1e6e8e1f1e6e8e1f1e6"
+    sha256 "415bef44b2dfa702d17ebb08637c0141eb54767cfbeafe60d07e62104183b56a"
   end
 
   resource "pyyaml" do
