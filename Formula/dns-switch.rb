@@ -26,7 +26,7 @@ class DnsSwitch < Formula
     (share/"dns-switch").install "config.yaml"
 
     # Create a wrapper script that copies config on first run
-    (bin/"dns-switch-wrapper").write <<~EOS
+    (bin/"dns-switch").write <<~EOS
       #!/bin/bash
       CONFIG_DIR="$HOME/.config/dns-switch"
       CONFIG_FILE="$CONFIG_DIR/config.yaml"
@@ -40,9 +40,6 @@ class DnsSwitch < Formula
       cd "$CONFIG_DIR"
       exec "#{libexec}/bin/dns-switch" "$@"
     EOS
-
-    chmod 0755, bin/"dns-switch-wrapper"
-    (bin/"dns-switch").write_env_script(bin/"dns-switch-wrapper", :PATH => "#{libexec}/bin:$PATH")
   end
 
   def caveats
