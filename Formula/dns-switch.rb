@@ -24,22 +24,6 @@ class DnsSwitch < Formula
 
     # Install default config to share directory
     (share/"dns-switch").install "config.yaml"
-
-    # Create a wrapper script that copies config on first run
-    (bin/"dns-switch").write <<~EOS
-      #!/bin/bash
-      CONFIG_DIR="$HOME/.config/dns-switch"
-      CONFIG_FILE="$CONFIG_DIR/config.yaml"
-
-      if [ ! -f "$CONFIG_FILE" ]; then
-        mkdir -p "$CONFIG_DIR"
-        cp "#{share}/dns-switch/config.yaml" "$CONFIG_FILE"
-        echo "Created default config at $CONFIG_FILE"
-      fi
-
-      cd "$CONFIG_DIR"
-      exec "#{libexec}/bin/dns-switch" "$@"
-    EOS
   end
 
   def caveats
@@ -47,7 +31,12 @@ class DnsSwitch < Formula
       DNS Switch requires sudo to modify network settings.
       Run with: sudo dns-switch
 
-      Configuration file location: ~/.config/dns-switch/config.yaml
+      Configuration file: create ~/.config/dns-switch/config.yaml
+      Example config: #{share}/dns-switch/config.yaml
+
+      Copy the example config:
+        mkdir -p ~/.config/dns-switch
+        cp #{share}/dns-switch/config.yaml ~/.config/dns-switch/
 
       You can edit this file to add your own DNS profiles.
     EOS
