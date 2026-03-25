@@ -1,25 +1,25 @@
 class DnsSwitch < Formula
   desc "Fast, user-friendly TUI for quickly switching between DNS configurations"
   homepage "https://github.com/pinaka-io/dns-switch"
-  version "1.0.0"
+  version "1.0.1"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.0/dns-switch-darwin-arm64.tar.gz"
-      sha256 "81615c2f214dcbfd92c6c2d0d0a77933dec62c5f450998dd05fc28eced1f19ca"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.1/dns-switch-darwin-arm64.tar.gz"
+      sha256 "fc528f1e64a7364b57f33a963420e7d928c8af468b3c3f4d5f4a7197bbcbe0af"
     else
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.0/dns-switch-darwin-amd64.tar.gz"
-      sha256 "35b721e58e91554ac8ea97be32a7e44aa63096d7043f618e7eecfee24fbf230f"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.1/dns-switch-darwin-amd64.tar.gz"
+      sha256 "d41fffa068ab814350992268d122ab58336ad715ccf28d73ca2ecc1bdfb6e101"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.0/dns-switch-linux-arm64.tar.gz"
-      sha256 "0eb0541f09c7f20510e5091c9ae9cb62ae1287bd5209a834c02f197374c74c1d"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.1/dns-switch-linux-arm64.tar.gz"
+      sha256 "13290b362574bfb75f9d82ac53381a9972e410c0fe29259f574d5cb18ff77d55"
     else
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.0/dns-switch-linux-amd64.tar.gz"
-      sha256 "0cea9b9449a4965c665a08e1368f3f48daf99d1e71c2228d5ec87a63eb9474ea"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.1/dns-switch-linux-amd64.tar.gz"
+      sha256 "1f5ba842d060d605d21c0b9284a448586b8878043be9a989122770a0d81ec061"
     end
   end
 
