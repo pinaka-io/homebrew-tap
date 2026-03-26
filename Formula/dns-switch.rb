@@ -5,21 +5,21 @@
 class DnsSwitch < Formula
   desc "Fast, user-friendly TUI for quickly switching between DNS configurations"
   homepage "https://github.com/pinaka-io/dns-switch"
-  version "1.0.3"
+  version "1.0.4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.3/dns-switch-darwin-amd64.tar.gz"
-      sha256 "02751d8fd26226aac16073a144dbc381c16295e4e4cd827e57979b32953e6000"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-darwin-amd64.tar.gz"
+      sha256 "9c350510fa72f48a292752dc3988a795573b0e4755be4c419e78beb076afa8e0"
 
       define_method(:install) do
         bin.install "dns-switch"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.3/dns-switch-darwin-arm64.tar.gz"
-      sha256 "6117f10ed798aa5064d965f75b4047e0c47dd291e38ebd7a621b616b2a0fea2c"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-darwin-arm64.tar.gz"
+      sha256 "7ce297d1858f248a070b121bc6df60c38a33835bcad4f249425b4fad67a66d50"
 
       define_method(:install) do
         bin.install "dns-switch"
@@ -29,15 +29,15 @@ class DnsSwitch < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.3/dns-switch-linux-amd64.tar.gz"
-      sha256 "1765a720609d5b917fe40fe7555d052c43e5cefdc5c4162b9bbdc734ee6e4eb5"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-linux-amd64.tar.gz"
+      sha256 "531e0a9cff96cd07bd77b4981d8d0dffadc21a0757d375d9159d472f382f419e"
       define_method(:install) do
         bin.install "dns-switch"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.3/dns-switch-linux-arm64.tar.gz"
-      sha256 "9918e87bb5b29286942b4205ccc15b8df766d65039f5a48bdf5c297080a8a02c"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-linux-arm64.tar.gz"
+      sha256 "1d0f025b46a149d4ea65ed2f7ad8a85614a241cd2922fe6608ee7358a009f64d"
       define_method(:install) do
         bin.install "dns-switch"
       end
@@ -45,9 +45,9 @@ class DnsSwitch < Formula
   end
 
   def post_install
-    config_dir = HOMEBREW_PREFIX/"config/dns-switch"
+    config_dir = Pathname.new(ENV["HOME"]).join(".config", "dns-switch")
     config_dir.mkpath
-    config_file = config_dir/"config.yaml"
+    config_file = config_dir.join("config.yaml")
     unless config_file.exist?
       File.write(config_file, <<~EOS)
         # DNS Switch Configuration
