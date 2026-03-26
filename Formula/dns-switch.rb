@@ -5,21 +5,21 @@
 class DnsSwitch < Formula
   desc "Fast, user-friendly TUI for quickly switching between DNS configurations"
   homepage "https://github.com/pinaka-io/dns-switch"
-  version "1.0.4"
+  version "1.0.5"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-darwin-amd64.tar.gz"
-      sha256 "9c350510fa72f48a292752dc3988a795573b0e4755be4c419e78beb076afa8e0"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.5/dns-switch-darwin-amd64.tar.gz"
+      sha256 "a614d8d2c9c1877e1c26cfce3fe89f5261a2db9ea148653e7320a276a833a4af"
 
       define_method(:install) do
         bin.install "dns-switch"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-darwin-arm64.tar.gz"
-      sha256 "7ce297d1858f248a070b121bc6df60c38a33835bcad4f249425b4fad67a66d50"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.5/dns-switch-darwin-arm64.tar.gz"
+      sha256 "4d01ec028196b9cd9d117cc3448fba1a365145d5f3b645f8cb353a47200f9416"
 
       define_method(:install) do
         bin.install "dns-switch"
@@ -29,78 +29,18 @@ class DnsSwitch < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-linux-amd64.tar.gz"
-      sha256 "531e0a9cff96cd07bd77b4981d8d0dffadc21a0757d375d9159d472f382f419e"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.5/dns-switch-linux-amd64.tar.gz"
+      sha256 "f5efa315a796afe59ffa646abb5beb48cedfe31ad5f7526d11d315220db3f420"
       define_method(:install) do
         bin.install "dns-switch"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.4/dns-switch-linux-arm64.tar.gz"
-      sha256 "1d0f025b46a149d4ea65ed2f7ad8a85614a241cd2922fe6608ee7358a009f64d"
+      url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.5/dns-switch-linux-arm64.tar.gz"
+      sha256 "518abdf17a88609eaa2bf0ab27db4302036afe360c4bfe3b189ed3930dc52a24"
       define_method(:install) do
         bin.install "dns-switch"
       end
-    end
-  end
-
-  def post_install
-    config_dir = Pathname.new(ENV["HOME"]).join(".config", "dns-switch")
-    config_dir.mkpath
-    config_file = config_dir.join("config.yaml")
-    unless config_file.exist?
-      File.write(config_file, <<~EOS)
-        # DNS Switch Configuration
-        # Add your DNS profiles here
-
-        dns_profiles:
-          # Adguard DNS
-          adguard:
-            name: "AdGuard DNS"
-            description: "AdGuard DNS for blocking ads and trackers"
-            primary: "192.168.4.69"
-            secondary: ""
-
-          # Cloudflare DNS
-          cloudflare:
-            name: "Cloudflare (1.1.1.1)"
-            description: "Fast and privacy-focused DNS"
-            primary: "1.1.1.1"
-            secondary: "1.0.0.1"
-
-          # Google DNS
-          google:
-            name: "Google Public DNS"
-            description: "Reliable DNS by Google"
-            primary: "8.8.8.8"
-            secondary: "8.8.4.4"
-
-          # Quad9 DNS
-          quad9:
-            name: "Quad9 (Security)"
-            description: "DNS with malware blocking"
-            primary: "9.9.9.9"
-            secondary: "149.112.112.112"
-
-          # OpenDNS
-          opendns:
-            name: "OpenDNS"
-            description: "Fast and reliable DNS"
-            primary: "208.67.222.222"
-            secondary: "208.67.220.220"
-
-          # DHCP (Automatic)
-          dhcp:
-            name: "DHCP (Automatic)"
-            description: "Use DNS provided by your network"
-            primary: "auto"
-            secondary: "auto"
-
-        # Network interface to configure (e.g., "Wi-Fi", "Ethernet", "en0")
-        # Leave empty to show a list of available interfaces
-        network_interface: ""
-      EOS
-      puts "Default config file created at #{config_file}"
     end
   end
 
