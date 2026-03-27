@@ -12,18 +12,10 @@ class DnsSwitch < Formula
     if Hardware::CPU.intel?
       url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.6/dns-switch-darwin-amd64.tar.gz"
       sha256 "e373746b3118d614d229a442d9246be972b02af7d1df4d464159818a9ab7ff88"
-
-      define_method(:install) do
-        bin.install "dns-switch"
-      end
     end
     if Hardware::CPU.arm?
       url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.6/dns-switch-darwin-arm64.tar.gz"
       sha256 "bf89938b202335411c6923038025bfb48f5c9e5deb5e6e560bef9bf50aacfdf4"
-
-      define_method(:install) do
-        bin.install "dns-switch"
-      end
     end
   end
 
@@ -31,17 +23,15 @@ class DnsSwitch < Formula
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.6/dns-switch-linux-amd64.tar.gz"
       sha256 "2c02f9815f48fb33b5013cb0fc155dd85bb881d277bc9f2da644371feba5bea4"
-      define_method(:install) do
-        bin.install "dns-switch"
-      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/pinaka-io/dns-switch/releases/download/v1.0.6/dns-switch-linux-arm64.tar.gz"
       sha256 "33b97da7cdafe89847fca837592e6a976e375e7cebdcd5c3df969422549790c8"
-      define_method(:install) do
-        bin.install "dns-switch"
-      end
     end
+  end
+
+  def install
+    bin.install "dns-switch"
   end
 
   def caveats

@@ -1,6 +1,6 @@
 cask "brewui" do
-  version "0.1.4"
-  sha256 "e56bedb091389ccc67e0ada11f341e279409af20deab14692a49d4e1fb26ba96"
+  version "0.1.5"
+  sha256 "9585bbe9a4942a526615108a2250b7ac4234fb724b05bb055fc6eb0e60db509d"
 
   url "https://github.com/nishantapatil3/brewUI/releases/download/v#{version}/brewUI.app.zip"
   name "brewUI"
