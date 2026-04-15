@@ -11,27 +11,37 @@ class PortForward < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/nishantapatil3/port-forward/releases/download/v1.0.0/port-forward-darwin-amd64.tar.gz"
-      sha256 "3d0856ef2a0f7b405ccbc16eaf99ac45787b281c1bb6e6cb9a2d35771cd7cf7e"
+      sha256 "504ab4bf2983a7be71499b2d0f7713b5f193ec3866717f44d7d09a66a7737850"
+
+      define_method(:install) do
+        bin.install "port-forward"
+      end
     end
     if Hardware::CPU.arm?
       url "https://github.com/nishantapatil3/port-forward/releases/download/v1.0.0/port-forward-darwin-arm64.tar.gz"
-      sha256 "91f328c5d1335a5db0fdcc1e42dbaea4835828eb887e560f0b7aa4790cd2f5ff"
+      sha256 "fa8c415cfed9a4371915ef9e427e9e6e2cab353a926c11f93865a4181c08486e"
+
+      define_method(:install) do
+        bin.install "port-forward"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://github.com/nishantapatil3/port-forward/releases/download/v1.0.0/port-forward-linux-amd64.tar.gz"
-      sha256 "119bcae7b4c6e5e42ccf16966a5114e63e34e919cd49c94027aa70b1e384301e"
+      sha256 "4d336d7b74784e38bd6ee17efc91e8f0005c45a7922c383f5b8a8838a4450362"
+      define_method(:install) do
+        bin.install "port-forward"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/nishantapatil3/port-forward/releases/download/v1.0.0/port-forward-linux-arm64.tar.gz"
-      sha256 "e8e568c524ce2a60a0ec391317654d446334543218e3da41b2795071998cacb8"
+      sha256 "4c5687ed696c17c5c5be155aee39a9858b6e2e99b419a174ecf716b060cf2b57"
+      define_method(:install) do
+        bin.install "port-forward"
+      end
     end
-  end
-
-  def install
-    bin.install "port-forward"
   end
 
   def caveats
